@@ -1,1 +1,11 @@
-<p>floating-button works!</p>
+<div class="floating-button">
+    <div (click)="toggleMenu($event)">
+        <img src="../../assets/opcion_icon.svg" alt="options">
+    </div>
+    @if (menuVisible) {
+    <div class="menu">
+        <button (click)="edit()">Editar</button>
+        <button (click)="delete()">Eliminar</button>
+    </div>
+    }
+</div>

@@ -6,10 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto;
 
     .product-detail__table {
-        overflow: auto;
 
         .product-detail__options {
             display: flex;
@@ -18,7 +16,6 @@
             margin-bottom: 24px;
 
             .product-detail__search-input {
-
                 input {
                     width: 200px;
                     padding: 8px;
@@ -42,7 +39,6 @@
         }
 
         table {
-            width: $width-table;
             border-collapse: collapse;
             table-layout: fixed;
         }
@@ -80,11 +76,6 @@
 
         .product-detail__table-menu-button {
             width: $width-menu-button;
-            cursor: pointer;
-
-            img {
-                height: 20px;
-            }
         }
 
         .product-detail__pagination {
