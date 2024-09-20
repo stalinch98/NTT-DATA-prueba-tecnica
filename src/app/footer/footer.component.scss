@@ -13,8 +13,9 @@
     justify-content: center;
     align-items: center;
 
-    .footer-title h1 {
+    .footer-title {
         color: $white-color;
         @include font-primary;
+        font-weight: 600;
     }
 }

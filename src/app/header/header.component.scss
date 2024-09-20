@@ -10,8 +10,9 @@
     justify-content: center;
     align-items: center;
 
-    .header__title h1 {
+    .header__title {
         color: $white-color;
         @include font-primary;
+        font-weight: 600;
     }
 }

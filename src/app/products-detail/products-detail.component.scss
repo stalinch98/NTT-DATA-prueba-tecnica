@@ -1,0 +1,109 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.product-detail__container {
+    padding: 100px 300px 100px 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+
+    .product-detail__table {
+        overflow: auto;
+
+        .product-detail__options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+
+            .product-detail__search-input {
+
+                input {
+                    width: 200px;
+                    padding: 8px;
+                    border-radius: 4px;
+                    border: 1px solid $color-border;
+                }
+            }
+
+            .product-detail__add-button {
+                display: flex;
+                justify-content: flex-end;
+
+                button {
+                    background-color: $yellow-color;
+                    padding: 8px 24px;
+                    border-radius: 4px;
+                    border: 0;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        table {
+            width: $width-table;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        th {
+            background-color: $color-background-th;
+        }
+
+        th,
+        td {
+            border: 1px solid $color-border;
+            padding: $padding-cell;
+            text-align: left;
+        }
+
+        .product-detail__table-logo {
+            width: $width-logo;
+        }
+
+        .product-detail__table-name {
+            width: $width-name;
+        }
+
+        .product-detail__table-description {
+            width: $width-description;
+        }
+
+        .product-detail__table-release-date {
+            width: $width-release-date;
+        }
+
+        .product-detail__table-revision-date {
+            width: $width-revision-date;
+        }
+
+        .product-detail__table-menu-button {
+            width: $width-menu-button;
+            cursor: pointer;
+
+            img {
+                height: 20px;
+            }
+        }
+
+        .product-detail__pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 24px;
+
+            .product-detail__counter {
+                @include font-secondary;
+            }
+
+            .product-detail__pagination-button {
+                select {
+                    padding: 2px 8px;
+                    border-radius: 4px;
+                    border: 1px solid $color-border;
+                }
+            }
+        }
+    }
+}
