@@ -1,1 +1,55 @@
-<p>register-form works!</p>
+<div class="modal">
+    <div class="modal-container">
+        <div class="modal-header" (click)="$event.stopPropagation()">
+            <span class="close-button" (click)="close()">×</span>
+            <div class="modal-title">Formulario de registro</div>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="onSubmit()">
+
+                <div class="modal-row">
+                    <div class="modal-input">
+                        <label for="idProduct">ID</label>
+                        <input type="text" id="idProduct" name="idProduct" required [(ngModel)]="formData.idProduct">
+                    </div>
+
+                    <div class="modal-input">
+                        <label for="name">Nombre</label>
+                        <input type="name" id="name" name="name" required [(ngModel)]="formData.name">
+                    </div>
+                </div>
+
+                <div class="modal-row">
+                    <div class="modal-input">
+                        <label for="description">Descripción</label>
+                        <input type="description" id="description" name="description" required
+                            [(ngModel)]="formData.description">
+                    </div>
+
+                    <div class="modal-input">
+                        <label for="logo">Logo</label>
+                        <input type="logo" id="logo" name="logo" required [(ngModel)]="formData.logo">
+                    </div>
+                </div>
+                <div class="modal-row">
+                    <div class="modal-input">
+                        <label for="releaseDate">Fecha Liberación</label>
+                        <input type="releaseDate" id="releaseDate" name="releaseDate" required
+                            [(ngModel)]="formData.releaseDate">
+                    </div>
+
+                    <div class="modal-input">
+                        <label for="revisionDate">Fecha Revisión</label>
+                        <input type="revisionDate" id="revisionDate" name="revisionDate" required
+                            [(ngModel)]="formData.revisionDate">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn-restart">Reiniciar</button>
+                    <button class="btn-send" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

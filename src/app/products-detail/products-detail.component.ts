@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
 import { FloatingButtonComponent } from "../floating-button/floating-button.component";
+import { RegisterFormComponent } from "../register-form/register-form.component";
 
 @Component({
   selector: 'app-products-detail',
   standalone: true,
-  imports: [FloatingButtonComponent],
+  imports: [FloatingButtonComponent, RegisterFormComponent],
   templateUrl: './products-detail.component.html',
   styleUrl: './products-detail.component.scss'
 })
 export class ProductsDetailComponent {
+
+  showModalProduct: boolean = true;
+
   products: any[] = [
     {
       logo: 'Logo 1',
@@ -32,4 +36,13 @@ export class ProductsDetailComponent {
       revisionDate: '2024-09-19'
     }
   ];
+
+  showModalPr() {
+    debugger;
+    this.showModalProduct = true;
+  }
+
+  closeModal() {
+    this.showModalProduct = false;
+  }
 }

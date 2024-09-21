@@ -6,7 +6,7 @@
                     <input type="text" placeholder="Buscar...">
                 </div>
                 <div class="product-detail__add-button">
-                    <button class="button button--primary">Agregar</button>
+                    <button class="button button--primary" (click)="showModalPr()">Agregar</button>
                 </div>
             </div>
 
@@ -56,3 +56,7 @@
 
     </div>
 </div>
+
+@if(showModalProduct){
+<app-register-form (closeModal)="closeModal()"></app-register-form>
+}
