@@ -20,36 +20,38 @@ export class ProductsDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((data) => {
-      this.products = data;
+      this.products = data ?? [];
     });
+
+    /* this.products = [
+      {
+        id: '1',
+        logo: 'Logo 1',
+        name: 'Producto A',
+        description: 'Descripción del producto A',
+        date_release: new Date('2024-09-19'),
+        date_revision: new Date('2024-09-19')
+      },
+      {
+        id: '2',
+        logo: 'Logo 1',
+        name: 'Producto B',
+        description: 'Descripción del producto B',
+        date_release: new Date('2024-09-19'),
+        date_revision: new Date('2024-09-19')
+      },
+      {
+        id: '3',
+        logo: 'Logo 1',
+        name: 'Producto C',
+        description: 'Descripción del producto C',
+        date_release: new Date('2024-09-19'),
+        date_revision: new Date('2024-09-19')
+      }
+    ]; */
   }
 
-  /* products: any[] = [
-    {
-      logo: 'Logo 1',
-      name: 'Producto A',
-      description: 'Descripción del producto A',
-      releaseDate: '2024-09-19',
-      revisionDate: '2024-09-19'
-    },
-    {
-      logo: 'Logo 1',
-      name: 'Producto B',
-      description: 'Descripción del producto B',
-      releaseDate: '2024-09-19',
-      revisionDate: '2024-09-19'
-    },
-    {
-      logo: 'Logo 1',
-      name: 'Producto C',
-      description: 'Descripción del producto C',
-      releaseDate: '2024-09-19',
-      revisionDate: '2024-09-19'
-    }
-  ]; */
-
   showModalPr() {
-    debugger;
     this.showModalProduct = true;
   }
 

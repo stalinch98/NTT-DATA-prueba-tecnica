@@ -25,6 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if(products.length > 0){
                     @for (product of products; track product.id; let i = $index, e = $even) {
                     <tr>
                         <td class="product-detail__table-logo">{{ product.logo }}</td>
@@ -36,6 +37,7 @@
                             <app-floating-button></app-floating-button>
                         </td>
                     </tr>
+                    }
                     }
                 </tbody>
             </table>
@@ -58,5 +60,5 @@
 </div>
 
 @if(showModalProduct){
-<app-register-form (closeModal)="closeModal()"></app-register-form>
+<app-register-form (closeModal)="closeModal()" [isEdit]="false"></app-register-form>
 }

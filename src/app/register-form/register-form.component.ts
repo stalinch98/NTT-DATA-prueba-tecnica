@@ -14,12 +14,12 @@ export class RegisterFormComponent {
   @Input() isEdit: boolean = false;
 
   formData = {
-    idProduct: '',
+    id: '',
     name: '',
     description: '',
     logo: '',
-    releaseDate: '',
-    revisionDate: '',
+    date_release: '',
+    date_revision: '',
   };
 
   close() {
@@ -28,5 +28,5 @@ export class RegisterFormComponent {
 
   onSubmit() {
     console.log(this.formData);
-   }
+  }
 }

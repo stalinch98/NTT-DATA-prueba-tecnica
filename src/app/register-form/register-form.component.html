@@ -10,19 +10,19 @@
                 <div class="modal-row">
                     <div class="modal-input">
                         <label for="idProduct">ID</label>
-                        <input type="text" id="idProduct" name="idProduct" required [(ngModel)]="formData.idProduct">
+                        <input type="text" id="id" name="id" required [(ngModel)]="formData.id">
                     </div>
 
                     <div class="modal-input">
                         <label for="name">Nombre</label>
-                        <input type="name" id="name" name="name" required [(ngModel)]="formData.name">
+                        <input type="text" id="name" name="name" required [(ngModel)]="formData.name">
                     </div>
                 </div>
 
                 <div class="modal-row">
                     <div class="modal-input">
                         <label for="description">Descripción</label>
-                        <input type="description" id="description" name="description" required
+                        <input type="text" id="description" name="description" required
                             [(ngModel)]="formData.description">
                     </div>
 
@@ -33,15 +33,15 @@
                 </div>
                 <div class="modal-row">
                     <div class="modal-input">
-                        <label for="releaseDate">Fecha Liberación</label>
-                        <input type="releaseDate" id="releaseDate" name="releaseDate" required
-                            [(ngModel)]="formData.releaseDate">
+                        <label for="date_release">Fecha Liberación</label>
+                        <input type="date" id="date_release" name="date_release" required
+                            [(ngModel)]="formData.date_release">
                     </div>
 
                     <div class="modal-input">
-                        <label for="revisionDate">Fecha Revisión</label>
-                        <input type="revisionDate" id="revisionDate" name="revisionDate" required
-                            [(ngModel)]="formData.revisionDate">
+                        <label for="date_revision">Fecha Revisión</label>
+                        <input type="date" id="date_revision" name="date_revision" required
+                            [(ngModel)]="formData.date_revision">
                     </div>
                 </div>
 
