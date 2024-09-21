@@ -34,7 +34,7 @@
                         <td class="product-detail__table-release-date">{{ product.date_release }}</td>
                         <td class="product-detail__table-revision-date">{{ product.date_revision }}</td>
                         <td class="product-detail__table-menu-button">
-                            <app-floating-button></app-floating-button>
+                            <app-floating-button [currentProduct]="product"></app-floating-button>
                         </td>
                     </tr>
                     }

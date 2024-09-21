@@ -10,9 +10,9 @@
     }
 </div>
 @if(showModalDelete){
-<app-modal-delete (closeModal)="closeModal()" [productDelete]="'producto'"></app-modal-delete>
+<app-modal-delete (closeModal)="closeModal()" [productDelete]="currentProduct"></app-modal-delete>
 }
 
 @if(showModalEdit){
-<app-register-form (closeModal)="closeModalEdit()" [isEdit]="true"></app-register-form>
+<app-register-form (closeModal)="closeModalEdit()" [isEdit]="true" [editProduct]="currentProduct"></app-register-form>
 }

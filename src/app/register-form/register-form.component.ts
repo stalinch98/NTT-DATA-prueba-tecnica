@@ -14,6 +14,7 @@ import { ProductInterface } from '../interfaces/interfaces';
 export class RegisterFormComponent {
   @Output() closeModal = new EventEmitter<void>();
   @Input() isEdit: boolean = false;
+  @Input() editProduct: ProductInterface = {} as ProductInterface;
   bodyProduct: ProductInterface = {} as ProductInterface;
 
   constructor(private productService: ProductService) { }

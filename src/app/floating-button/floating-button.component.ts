@@ -1,6 +1,7 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { ModalDeleteComponent } from "../modal-delete/modal-delete.component";
 import { RegisterFormComponent } from '../register-form/register-form.component';
+import { ProductInterface } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-floating-button',
@@ -13,6 +14,7 @@ export class FloatingButtonComponent {
   menuVisible: boolean = false;
   showModalDelete: boolean = false;
   showModalEdit: boolean = false;
+  @Input() currentProduct: ProductInterface = {} as ProductInterface;
 
   toggleMenu(event: MouseEvent) {
     event.stopPropagation();

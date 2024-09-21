@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ProductInterface } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-modal-delete',
@@ -9,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ModalDeleteComponent {
   @Output() closeModal = new EventEmitter<void>();
-  @Input() productDelete: any;
+  @Input() productDelete: ProductInterface = {} as ProductInterface;
 
   close() {
     this.closeModal.emit();
