@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '../product.service';
 import { ProductInterface } from '../interfaces/interfaces';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-register-form',
@@ -25,7 +26,7 @@ export class RegisterFormComponent implements OnInit {
     date_revision: '',
   };
 
-  constructor(private productService: ProductService) { }
+  constructor(private _productService: ProductService, private _notificationService: NotificationService) { }
 
   ngOnInit(): void {
     if (this.isEdit) {
@@ -48,11 +49,12 @@ export class RegisterFormComponent implements OnInit {
     this.bodyProduct = { ...this.formData, date_release: new Date(this.formData.date_release), date_revision: new Date(this.formData.date_revision) };
 
     if (this.isEdit) {
-      this.productService.updateProduct(this.bodyProduct).subscribe((data) => {
+      this._productService.updateProduct(this.bodyProduct).subscribe((data) => {
         console.log(data);
       });
     } else {
-      this.productService.createProduct(this.bodyProduct).subscribe((data) => {
+      this._productService.createProduct(this.bodyProduct).subscribe((data) => {
+        this._notificationService.sendNotification('Product deleted successfully');
         console.log(data);
       });
     }

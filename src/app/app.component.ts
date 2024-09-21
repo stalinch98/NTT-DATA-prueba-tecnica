@@ -6,12 +6,14 @@ import { ProductsDetailComponent } from './products-detail/products-detail.compo
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './product.service';
+import { NotificationComponent } from './notification/notification.component';
+import { NotificationService } from './notification.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, ProductsDetailComponent, FormsModule, HttpClientModule],
-  providers: [ProductService],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, ProductsDetailComponent, FormsModule, NotificationComponent, HttpClientModule],
+  providers: [ProductService, NotificationService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
