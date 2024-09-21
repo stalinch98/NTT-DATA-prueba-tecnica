@@ -3,11 +3,12 @@ import { FloatingButtonComponent } from "../floating-button/floating-button.comp
 import { RegisterFormComponent } from "../register-form/register-form.component";
 import { ProductService } from '../product.service';
 import { ProductInterface } from '../interfaces/interfaces';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-products-detail',
   standalone: true,
-  imports: [FloatingButtonComponent, RegisterFormComponent],
+  imports: [FloatingButtonComponent, RegisterFormComponent, CommonModule],
   templateUrl: './products-detail.component.html',
   styleUrl: './products-detail.component.scss'
 })
