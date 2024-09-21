@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FloatingButtonComponent } from "../floating-button/floating-button.component";
 import { RegisterFormComponent } from "../register-form/register-form.component";
 import { ProductService } from '../product.service';
+import { ProductInterface } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-products-detail',
@@ -13,7 +14,7 @@ import { ProductService } from '../product.service';
 export class ProductsDetailComponent implements OnInit {
 
   showModalProduct: boolean = false;
-  products: any[] = [];
+  products: ProductInterface[] = [];
 
   constructor(private productService: ProductService) { }
 
