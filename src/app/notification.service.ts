@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { NotificationInterface } from './interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
-  private notificationSubject = new Subject<string>();
+  private notificationSubject = new Subject<NotificationInterface>();
 
-  sendNotification(message: string): void {
-    this.notificationSubject.next(message);
+  sendNotification(message: string, type: 'success' | 'error'): void {
+    this.notificationSubject.next({ message, type });
   }
 
-  getNotification(): Observable<string> {
+  getNotification(): Observable<NotificationInterface> {
     return this.notificationSubject.asObservable();
   }
 }

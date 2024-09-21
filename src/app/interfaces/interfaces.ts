@@ -6,4 +6,9 @@ interface ProductInterface {
     date_release: Date;
     date_revision: Date;
 }
-export { ProductInterface };
+interface NotificationInterface {
+    message: string;
+    type: 'success' | 'error';
+}
+
+export { ProductInterface, NotificationInterface };

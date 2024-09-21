@@ -54,8 +54,11 @@ export class RegisterFormComponent implements OnInit {
       });
     } else {
       this._productService.createProduct(this.bodyProduct).subscribe((data) => {
-        this._notificationService.sendNotification('Product deleted successfully');
+        this._notificationService.sendNotification('Product deleted successfully', 'success');
         console.log(data);
+      }, (error) => {
+        console.log(error);
+        this._notificationService.sendNotification(error.error.message, 'error');
       });
     }
   }
