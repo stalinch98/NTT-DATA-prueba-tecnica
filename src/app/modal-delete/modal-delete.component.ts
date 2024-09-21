@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductInterface } from '../interfaces/interfaces';
 import { ProductService } from '../product.service';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-modal-delete',
@@ -13,7 +14,7 @@ export class ModalDeleteComponent {
   @Output() closeModal = new EventEmitter<void>();
   @Input() productDelete: ProductInterface = {} as ProductInterface;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private _notificationService: NotificationService) { }
 
   close() {
     this.closeModal.emit();
@@ -21,7 +22,8 @@ export class ModalDeleteComponent {
 
   confirm() {
     this.productService.deleteProduct(this.productDelete.id).subscribe((data) => {
-      console.log(data);
+      this._notificationService.sendNotification(data.message, 'success');
     });
+    this.close();
   }
 }

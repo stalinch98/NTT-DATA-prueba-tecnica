@@ -50,16 +50,22 @@ export class RegisterFormComponent implements OnInit {
 
     if (this.isEdit) {
       this._productService.updateProduct(this.bodyProduct).subscribe((data) => {
-        console.log(data);
+        this._notificationService.sendNotification(data.message, 'success');
+        this.close();
+      }, (er) => {
+        this._notificationService.sendNotification(er.error.message, 'error');
       });
     } else {
       this._productService.createProduct(this.bodyProduct).subscribe((data) => {
-        this._notificationService.sendNotification('Product deleted successfully', 'success');
-        console.log(data);
-      }, (error) => {
-        console.log(error);
-        this._notificationService.sendNotification(error.error.message, 'error');
+        this._notificationService.sendNotification(data.message, 'success');
+        this.close();
+      }, (er) => {
+        this._notificationService.sendNotification(this.getConstraintsString(er.error.errors), 'error');
       });
     }
+  }
+
+  getConstraintsString(errors: any[]): string {
+    return errors.map(error => Object.values(error.constraints).join(', ')).join(', ');
   }
 }
