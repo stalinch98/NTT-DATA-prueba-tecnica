@@ -1,16 +1,18 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { ModalDeleteComponent } from "../modal-delete/modal-delete.component";
+import { RegisterFormComponent } from '../register-form/register-form.component';
 
 @Component({
   selector: 'app-floating-button',
   standalone: true,
-  imports: [ModalDeleteComponent],
+  imports: [ModalDeleteComponent, RegisterFormComponent],
   templateUrl: './floating-button.component.html',
   styleUrl: './floating-button.component.scss'
 })
 export class FloatingButtonComponent {
   menuVisible: boolean = false;
   showModalDelete: boolean = false;
+  showModalEdit: boolean = false;
 
   toggleMenu(event: MouseEvent) {
     event.stopPropagation();
@@ -19,6 +21,7 @@ export class FloatingButtonComponent {
 
   edit() {
     this.menuVisible = false;
+    this.showModalEdit = true;
   }
 
   delete() {
@@ -37,5 +40,9 @@ export class FloatingButtonComponent {
 
   closeModal() {
     this.showModalDelete = false;
+  }
+
+  closeModalEdit() {
+    this.showModalEdit = false;
   }
 }

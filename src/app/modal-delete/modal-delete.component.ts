@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal-delete',
@@ -9,6 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ModalDeleteComponent {
   @Output() closeModal = new EventEmitter<void>();
+  @Input() productDelete: any;
 
   close() {
     this.closeModal.emit();
