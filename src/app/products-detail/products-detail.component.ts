@@ -11,7 +11,7 @@ import { RegisterFormComponent } from "../register-form/register-form.component"
 })
 export class ProductsDetailComponent {
 
-  showModalProduct: boolean = true;
+  showModalProduct: boolean = false;
 
   products: any[] = [
     {
