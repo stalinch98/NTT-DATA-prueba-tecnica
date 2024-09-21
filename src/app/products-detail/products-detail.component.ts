@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FloatingButtonComponent } from "../floating-button/floating-button.component";
 import { RegisterFormComponent } from "../register-form/register-form.component";
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-products-detail',
@@ -9,11 +10,20 @@ import { RegisterFormComponent } from "../register-form/register-form.component"
   templateUrl: './products-detail.component.html',
   styleUrl: './products-detail.component.scss'
 })
-export class ProductsDetailComponent {
+export class ProductsDetailComponent implements OnInit {
 
   showModalProduct: boolean = false;
+  products: any[] = [];
 
-  products: any[] = [
+  constructor(private productService: ProductService) { }
+
+  ngOnInit(): void {
+    this.productService.getAllProducts().subscribe((data) => {
+      this.products = data;
+    });
+  }
+
+  /* products: any[] = [
     {
       logo: 'Logo 1',
       name: 'Producto A',
@@ -35,7 +45,7 @@ export class ProductsDetailComponent {
       releaseDate: '2024-09-19',
       revisionDate: '2024-09-19'
     }
-  ];
+  ]; */
 
   showModalPr() {
     debugger;
