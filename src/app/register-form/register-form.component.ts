@@ -46,14 +46,15 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit() {
     this.bodyProduct = { ...this.formData, date_release: new Date(this.formData.date_release), date_revision: new Date(this.formData.date_revision) };
-    if (!this.isEdit) {
+
+    if (this.isEdit) {
+      this.productService.updateProduct(this.bodyProduct).subscribe((data) => {
+        console.log(data);
+      });
+    } else {
       this.productService.createProduct(this.bodyProduct).subscribe((data) => {
         console.log(data);
       });
-    } /* else {
-      this.productService.createProduct(this.bodyProduct).subscribe((data) => {
-        console.log(data);
-      });
-    } */
+    }
   }
 }

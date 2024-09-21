@@ -20,4 +20,8 @@ export class ProductService {
     return this._http.post<any>(`${this.apiUrl}/products`, product);
   }
 
+  updateProduct(product: ProductInterface): Observable<any> {
+    return this._http.put<any>(`${this.apiUrl}/products/${product.id}`, product);
+  }
+
 }
