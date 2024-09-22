@@ -10,23 +10,24 @@
                 <div class="modal-row">
                     <div class="modal-input">
                         <label for="idProduct">ID</label>
-                        <input type="text" id="id" name="id" formControlName="id">
+                        <input type="text" id="id" name="id" formControlName="id"
+                            [ngClass]="{'input-error': registerForm.controls['id'].invalid && (registerForm.controls['id'].dirty || registerForm.controls['id'].touched)}">
                         @if(registerForm.controls['id'].invalid && (registerForm.controls['id'].dirty ||
                         registerForm.controls['id'].touched)){
                         @if(registerForm.controls['id'].errors?.['required']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             Este campo es requerido.
                         </div>
                         }
 
                         @if(registerForm.controls['id'].errors?.['minlength']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             El ID debe tener al menos 3 caracteres.
                         </div>
                         }
 
                         @if(registerForm.controls['id'].errors?.['maxlength']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             El ID no puede tener más de 10 caracteres.
                         </div>
                         }
@@ -35,23 +36,24 @@
 
                     <div class="modal-input">
                         <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" formControlName="name">
+                        <input type="text" id="name" name="name" formControlName="name"
+                            [ngClass]="{'input-error': registerForm.controls['name'].invalid && (registerForm.controls['name'].dirty || registerForm.controls['name'].touched)}">
                         @if(registerForm.controls['name'].invalid && (registerForm.controls['name'].dirty ||
                         registerForm.controls['name'].touched)){
                         @if(registerForm.controls['name'].errors?.['required']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             Este campo es requerido.
                         </div>
                         }
 
                         @if(registerForm.controls['name'].errors?.['minlength']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             El Nombre debe tener al menos 5 caracteres.
                         </div>
                         }
 
                         @if(registerForm.controls['name'].errors?.['maxlength']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             El Nombre no puede tener más de 100 caracteres.
                         </div>
                         }
@@ -62,24 +64,25 @@
                 <div class="modal-row">
                     <div class="modal-input">
                         <label for="description">Descripción</label>
-                        <input type="text" id="description" name="description" formControlName="description">
+                        <input type="text" id="description" name="description" formControlName="description"
+                            [ngClass]="{'input-error': registerForm.controls['description'].invalid && (registerForm.controls['description'].dirty || registerForm.controls['description'].touched)}">
                         @if(registerForm.controls['description'].invalid && (registerForm.controls['description'].dirty
                         ||
                         registerForm.controls['description'].touched)){
                         @if(registerForm.controls['description'].errors?.['required']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             Este campo es requerido.
                         </div>
                         }
 
                         @if(registerForm.controls['description'].errors?.['minlength']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             La Descripción debe tener al menos 10 caracteres.
                         </div>
                         }
 
                         @if(registerForm.controls['description'].errors?.['maxlength']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             La Descripción no puede tener más de 200 caracteres.
                         </div>
                         }
@@ -88,12 +91,13 @@
 
                     <div class="modal-input">
                         <label for="logo">Logo</label>
-                        <input type="logo" id="logo" name="logo" formControlName="logo">
+                        <input type="logo" id="logo" name="logo" formControlName="logo"
+                            [ngClass]="{'input-error': registerForm.controls['logo'].invalid && (registerForm.controls['logo'].dirty || registerForm.controls['logo'].touched)}">
                         @if(registerForm.controls['logo'].invalid && (registerForm.controls['logo'].dirty
                         ||
                         registerForm.controls['logo'].touched)){
                         @if(registerForm.controls['logo'].errors?.['required']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             Este campo es requerido.
                         </div>
                         }
@@ -103,19 +107,20 @@
                 <div class="modal-row">
                     <div class="modal-input">
                         <label for="date_release">Fecha Liberación</label>
-                        <input type="date" id="date_release" name="date_release" formControlName="date_release">
+                        <input type="date" id="date_release" name="date_release" formControlName="date_release"
+                            [ngClass]="{'input-error': registerForm.controls['date_release'].invalid && (registerForm.controls['date_release'].dirty || registerForm.controls['date_release'].touched)}">
                         @if(registerForm.controls['date_release'].invalid &&
                         (registerForm.controls['date_release'].dirty
                         ||
                         registerForm.controls['date_release'].touched)){
                         @if(registerForm.controls['date_release'].errors?.['required']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             Este campo es requerido.
                         </div>
                         }
 
                         @if(registerForm.controls['date_release'].errors?.['dateIsInPast']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             La Fecha debe ser igual o mayor a la fecha actual
                         </div>
                         }
@@ -126,19 +131,20 @@
 
                     <div class="modal-input">
                         <label for="date_revision">Fecha Revisión</label>
-                        <input type="date" id="date_revision" name="date_revision" formControlName="date_revision">
+                        <input type="date" id="date_revision" name="date_revision" formControlName="date_revision"
+                            [ngClass]="{'input-error': registerForm.controls['date_revision'].invalid && (registerForm.controls['date_revision'].dirty || registerForm.controls['date_revision'].touched)}">
                         @if(registerForm.controls['date_revision'].invalid &&
                         (registerForm.controls['date_revision'].dirty
                         ||
                         registerForm.controls['date_revision'].touched)){
                         @if(registerForm.controls['date_revision'].errors?.['required']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             Este campo es requerido.
                         </div>
                         }
 
                         @if(registerForm.controls['date_revision'].errors?.['invalidDateRevision']){
-                        <div>
+                        <div class="modal-inpt__error-message">
                             La fecha de revisión debe ser exactamente un año posterior a la fecha de liberación
                         </div>
                         }

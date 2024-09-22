@@ -64,6 +64,15 @@
                     border: 1px solid $color-border;
                     padding: 2px 8px;
                 }
+
+                .modal-inpt__error-message {
+                    @include font-tertiary;
+                    color: $red-color;
+                }
+
+                .input-error {
+                    border: 1px solid $red-color;
+                }
             }
 
             .modal-footer {

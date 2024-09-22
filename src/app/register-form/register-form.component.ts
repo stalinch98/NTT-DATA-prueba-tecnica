@@ -4,11 +4,12 @@ import { ProductService } from '../product.service';
 import { ProductInterface } from '../interfaces/interfaces';
 import { NotificationService } from '../notification.service';
 import { dateReleaseValidator, dateRevisionValidator } from '../validators/custom-validators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.scss'
 })
