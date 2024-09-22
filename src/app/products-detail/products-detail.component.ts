@@ -20,36 +20,13 @@ export class ProductsDetailComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.loadProducts();
+  }
+
+  loadProducts(): void {
     this.productService.getAllProducts().subscribe((data) => {
       this.products = data.data ?? [];
     });
-
-    /* this.products = [
-      {
-        id: '1',
-        logo: 'Logo 1',
-        name: 'Producto A',
-        description: 'Descripción del producto A',
-        date_release: new Date('2024-09-19'),
-        date_revision: new Date('2024-09-19')
-      },
-      {
-        id: '2',
-        logo: 'Logo 1',
-        name: 'Producto B',
-        description: 'Descripción del producto B',
-        date_release: new Date('2024-09-19'),
-        date_revision: new Date('2024-09-19')
-      },
-      {
-        id: '3',
-        logo: 'Logo 1',
-        name: 'Producto C',
-        description: 'Descripción del producto C',
-        date_release: new Date('2024-09-19'),
-        date_revision: new Date('2024-09-19')
-      }
-    ]; */
   }
 
   showModalPr() {
@@ -59,4 +36,10 @@ export class ProductsDetailComponent implements OnInit {
   closeModal() {
     this.showModalProduct = false;
   }
+
+  onProductCreated(product: ProductInterface) {
+    this.products.push(product);
+    this.closeModal();
+  }
+
 }

@@ -62,5 +62,6 @@
 </div>
 
 @if(showModalProduct){
-<app-register-form (closeModal)="closeModal()" [isEdit]="false"></app-register-form>
+<app-register-form (closeModal)="closeModal()" (productCreated)="onProductCreated($event)"
+    [isEdit]="false"></app-register-form>
 }

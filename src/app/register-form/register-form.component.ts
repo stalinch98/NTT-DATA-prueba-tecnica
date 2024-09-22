@@ -13,6 +13,7 @@ import { NotificationService } from '../notification.service';
 })
 export class RegisterFormComponent implements OnInit {
   @Output() closeModal = new EventEmitter<void>();
+  @Output() productCreated = new EventEmitter<ProductInterface>();
   @Input() isEdit: boolean = false;
   @Input() editProduct: ProductInterface = {} as ProductInterface;
   bodyProduct: ProductInterface = {} as ProductInterface;
@@ -58,6 +59,7 @@ export class RegisterFormComponent implements OnInit {
     } else {
       this._productService.createProduct(this.bodyProduct).subscribe((data) => {
         this._notificationService.sendNotification(data.message, 'success');
+        this.productCreated.emit(data.data);
         this.close();
       }, (er) => {
         this._notificationService.sendNotification(this.getConstraintsString(er.error.errors), 'error');
