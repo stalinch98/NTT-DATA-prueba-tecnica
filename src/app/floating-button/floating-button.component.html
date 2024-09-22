@@ -14,5 +14,5 @@
 }
 
 @if(showModalEdit){
-<app-register-form (closeModal)="closeModalEdit()" [isEdit]="true" [editProduct]="currentProduct"></app-register-form>
+<app-register-form (closeModal)="closeModalEdit()" [isEdit]="true" [editProduct]="currentProduct" (productUpdated)="onProductUpdated($event)"></app-register-form>
 }

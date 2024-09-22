@@ -42,4 +42,11 @@ export class ProductsDetailComponent implements OnInit {
     this.closeModal();
   }
 
+  onProductUpdated(product: ProductInterface) {
+    const index = this.products.findIndex(p => p.id === product.id);
+    if (index !== -1) {
+      this.products[index] = product;
+    }
+  }
+
 }

@@ -14,6 +14,7 @@ import { NotificationService } from '../notification.service';
 export class RegisterFormComponent implements OnInit {
   @Output() closeModal = new EventEmitter<void>();
   @Output() productCreated = new EventEmitter<ProductInterface>();
+  @Output() productUpdated = new EventEmitter<ProductInterface>();
   @Input() isEdit: boolean = false;
   @Input() editProduct: ProductInterface = {} as ProductInterface;
   bodyProduct: ProductInterface = {} as ProductInterface;
@@ -52,6 +53,7 @@ export class RegisterFormComponent implements OnInit {
     if (this.isEdit) {
       this._productService.updateProduct(this.bodyProduct).subscribe((data) => {
         this._notificationService.sendNotification(data.message, 'success');
+        this.productUpdated.emit(data.data);
         this.close();
       }, (er) => {
         this._notificationService.sendNotification(er.error.message, 'error');

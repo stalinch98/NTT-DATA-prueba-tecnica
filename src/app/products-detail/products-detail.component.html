@@ -36,7 +36,8 @@
                         <td class="product-detail__table-revision-date">{{ product.date_revision | date: 'dd/MM/yyyy' }}
                         </td>
                         <td class="product-detail__table-menu-button">
-                            <app-floating-button [currentProduct]="product"></app-floating-button>
+                            <app-floating-button [currentProduct]="product"
+                                (productUpdated)="onProductUpdated($event)"></app-floating-button>
                         </td>
                     </tr>
                     }
