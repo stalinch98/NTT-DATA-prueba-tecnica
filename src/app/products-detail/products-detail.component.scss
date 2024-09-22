@@ -56,6 +56,24 @@
 
         .product-detail__table-logo {
             width: $width-logo;
+
+            .product-detail__table-logo-container {
+                width: 30px;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50px;
+                border: 1px solid $color-border;
+                padding: 10px;
+                background-color: $color-background-th;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
         }
 
         .product-detail__table-name {

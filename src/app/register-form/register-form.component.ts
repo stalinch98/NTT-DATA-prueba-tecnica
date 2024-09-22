@@ -61,8 +61,9 @@ export class RegisterFormComponent implements OnInit {
     this.closeModal.emit();
   }
 
-  onSubmit(value: any) {
-    this.bodyProduct = { ...value, date_release: new Date(value.date_release), date_revision: new Date(value.date_revision) };
+  onSubmit() {
+    const formData = this.registerForm.getRawValue();
+    this.bodyProduct = { ...formData, date_release: new Date(formData.date_release), date_revision: new Date(formData.date_revision) };
 
     if (this.isEdit) {
       this._productService.updateProduct(this.bodyProduct).subscribe((data) => {
