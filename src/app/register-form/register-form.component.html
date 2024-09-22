@@ -31,6 +31,12 @@
                             El ID no puede tener más de 10 caracteres.
                         </div>
                         }
+
+                        @if(registerForm.controls['id'].errors?.['invalidId']){
+                        <div class="modal-inpt__error-message">
+                            Ya existe un registro con esta Id.
+                        </div>
+                        }
                         }
                     </div>
 

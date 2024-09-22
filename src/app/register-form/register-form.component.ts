@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ProductService } from '../product.service';
 import { ProductInterface } from '../interfaces/interfaces';
 import { NotificationService } from '../notification.service';
-import { dateReleaseValidator, dateRevisionValidator } from '../validators/custom-validators';
+import { dateReleaseValidator, dateRevisionValidator, isValidIdValidator } from '../validators/custom-validators';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -24,7 +24,7 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private _productService: ProductService, private _notificationService: NotificationService) {
     this.registerForm = this.fb.group({
-      id: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+      id: ['', { validators: [Validators.required, Validators.minLength(3), Validators.maxLength(10)], asyncValidators: [isValidIdValidator(_productService, 'id')] }],
       name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
       description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
       logo: ['', Validators.required],

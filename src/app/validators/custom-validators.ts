@@ -1,4 +1,6 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { ProductService } from '../product.service';
+import { catchError, map, of } from 'rxjs';
 
 const dateReleaseValidator = (control: any) => {
     const inputValue = control.value;
@@ -49,4 +51,33 @@ const dateRevisionValidator = (dateReleaseControlName: string): ValidatorFn => {
     };
 }
 
-export { dateReleaseValidator, dateRevisionValidator };
+const isValidIdValidator = (_productService: ProductService, idControlName: string): AsyncValidatorFn => {
+    return (control: AbstractControl) => {
+        const formGroup = control.parent;
+        if (!formGroup) {
+            return of(null);
+        }
+
+        const idControl = formGroup.get(idControlName);
+        if (!idControl) {
+            return of(null);
+        }
+
+        const idControlValue = idControl.value;
+
+        if (!idControlValue) {
+            return of(null);
+        }
+
+        return _productService.verificationProduct(idControlValue).pipe(
+            map((isInvalid) => {
+                return isInvalid ? { invalidId: true } : null;
+            }),
+            catchError(() => {
+                return of({ invalidId: true });
+            })
+        );
+    };
+};
+
+export { dateReleaseValidator, dateRevisionValidator, isValidIdValidator };
