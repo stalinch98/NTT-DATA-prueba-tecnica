@@ -3,7 +3,7 @@
         <div class="product-detail__table">
             <div class="product-detail__options">
                 <div class="product-detail__search-input">
-                    <input type="text" placeholder="Buscar...">
+                    <input type="text" placeholder="Buscar..." (input)="handleSearchTipoVacuna($event)">
                 </div>
                 <div class="product-detail__add-button">
                     <button class="button button--primary" (click)="showModalPr()">Agregar</button>
@@ -26,7 +26,7 @@
                 </thead>
                 <tbody>
                     @if(products.length > 0){
-                    @for (product of products; track product.id; let i = $index, e = $even) {
+                    @for (product of productsTable; track product.id; let i = $index, e = $even) {
                     <tr>
                         <td class="product-detail__table-logo">{{ product.logo }}</td>
                         <td class="product-detail__table-name">{{ product.name }}</td>
@@ -46,7 +46,7 @@
             </table>
             <div class="product-detail__pagination">
                 <div class="product-detail__counter">
-                    5 Resultados
+                    {{products.length}} Resultados
                 </div>
 
                 <div class="product-detail__pagination-button">

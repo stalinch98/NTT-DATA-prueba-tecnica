@@ -16,6 +16,7 @@ export class ProductsDetailComponent implements OnInit {
 
   showModalProduct: boolean = false;
   products: ProductInterface[] = [];
+  productsTable: ProductInterface[] = [];
 
   constructor(private productService: ProductService) { }
 
@@ -26,6 +27,7 @@ export class ProductsDetailComponent implements OnInit {
   loadProducts(): void {
     this.productService.getAllProducts().subscribe((data) => {
       this.products = data.data ?? [];
+      this.productsTable = data.data ?? [];
     });
   }
 
@@ -39,6 +41,7 @@ export class ProductsDetailComponent implements OnInit {
 
   onProductCreated(product: ProductInterface) {
     this.products.push(product);
+    this.productsTable = this.products;
     this.closeModal();
   }
 
@@ -46,12 +49,26 @@ export class ProductsDetailComponent implements OnInit {
     const index = this.products.findIndex(p => p.id === product.id);
     if (index !== -1) {
       this.products[index] = product;
+      this.productsTable = this.products;
     }
   }
 
   onProductDeleted(productId: string) {
     const newProducts = this.products.filter((item: ProductInterface) => item.id !== productId);
     this.products = newProducts;
+    this.productsTable = newProducts;
+  }
+
+  handleSearchTipoVacuna(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const value = inputElement.value.toLowerCase();
+    const result = this.products.reduce((acc: ProductInterface[], item: ProductInterface) => {
+      if ((item.name ?? '').toLowerCase().includes(value)) {
+        acc.push(item);
+      }
+      return acc;
+    }, []);
+    this.productsTable = result;
   }
 
 }
