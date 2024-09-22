@@ -17,6 +17,7 @@ export class ProductsDetailComponent implements OnInit {
   showModalProduct: boolean = false;
   products: ProductInterface[] = [];
   productsTable: ProductInterface[] = [];
+  limitRegisters: number = 5;
 
   constructor(private productService: ProductService) { }
 
@@ -69,6 +70,11 @@ export class ProductsDetailComponent implements OnInit {
       return acc;
     }, []);
     this.productsTable = result;
+  }
+
+  handlePageSizeChange(event: Event): void {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    this.limitRegisters = Number(selectedValue);
   }
 
 }

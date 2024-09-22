@@ -26,7 +26,8 @@
                 </thead>
                 <tbody>
                     @if(products.length > 0){
-                    @for (product of productsTable; track product.id; let i = $index, e = $even) {
+                    @for (product of productsTable | slice:0:limitRegisters; track product.id; let i = $index, e =
+                    $even) {
                     <tr>
                         <td class="product-detail__table-logo">{{ product.logo }}</td>
                         <td class="product-detail__table-name">{{ product.name }}</td>
@@ -50,7 +51,7 @@
                 </div>
 
                 <div class="product-detail__pagination-button">
-                    <select>
+                    <select (change)="handlePageSizeChange($event)">
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="20">20</option>
