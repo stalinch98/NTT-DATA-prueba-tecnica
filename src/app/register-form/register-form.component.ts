@@ -21,6 +21,7 @@ export class RegisterFormComponent implements OnInit {
   @Output() productUpdated = new EventEmitter<ProductInterface>();
   bodyProduct: ProductInterface = {} as ProductInterface;
   registerForm: FormGroup;
+  initialFormValues: any;
 
   constructor(private fb: FormBuilder, private _productService: ProductService, private _notificationService: NotificationService) {
     this.registerForm = this.fb.group({
@@ -31,6 +32,8 @@ export class RegisterFormComponent implements OnInit {
       date_release: ['', [Validators.required, dateReleaseValidator]],
       date_revision: ['', [Validators.required, dateRevisionValidator('date_release')]]
     });
+
+    this.initialFormValues = this.registerForm.getRawValue();
   }
 
   ngOnInit(): void {
@@ -82,5 +85,9 @@ export class RegisterFormComponent implements OnInit {
 
   getConstraintsString(errors: any[]): string {
     return errors.map(error => Object.values(error.constraints).join(', ')).join(', ');
+  }
+
+  resetForm() {
+    this.registerForm.reset(this.initialFormValues);
   }
 }
