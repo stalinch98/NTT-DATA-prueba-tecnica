@@ -49,4 +49,9 @@ export class ProductsDetailComponent implements OnInit {
     }
   }
 
+  onProductDeleted(productId: string) {
+    const newProducts = this.products.filter((item: ProductInterface) => item.id !== productId);
+    this.products = newProducts;
+  }
+
 }

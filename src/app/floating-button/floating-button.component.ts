@@ -16,6 +16,7 @@ export class FloatingButtonComponent {
   showModalEdit: boolean = false;
   @Input() currentProduct: ProductInterface = {} as ProductInterface;
   @Output() productUpdated = new EventEmitter<ProductInterface>();
+  @Output() productDeleted = new EventEmitter<string>();
 
   toggleMenu(event: MouseEvent) {
     event.stopPropagation();
@@ -51,5 +52,9 @@ export class FloatingButtonComponent {
 
   onProductUpdated(product: ProductInterface) {
     this.productUpdated.emit(product);
+  }
+
+  onProductDeleted(productId: string) {
+    this.productDeleted.emit(productId);
   }
 }

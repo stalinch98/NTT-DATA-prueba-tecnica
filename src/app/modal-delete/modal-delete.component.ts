@@ -13,6 +13,7 @@ import { NotificationService } from '../notification.service';
 export class ModalDeleteComponent {
   @Output() closeModal = new EventEmitter<void>();
   @Input() productDelete: ProductInterface = {} as ProductInterface;
+  @Output() productDeleted = new EventEmitter<string>();
 
   constructor(private productService: ProductService, private _notificationService: NotificationService) { }
 
@@ -23,7 +24,9 @@ export class ModalDeleteComponent {
   confirm() {
     this.productService.deleteProduct(this.productDelete.id).subscribe((data) => {
       this._notificationService.sendNotification(data.message, 'success');
+      this.close();
+      this.productDeleted.emit(this.productDelete.id);
     });
-    this.close();
+
   }
 }
