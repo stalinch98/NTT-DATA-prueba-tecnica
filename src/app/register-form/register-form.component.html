@@ -5,43 +5,144 @@
             <div class="modal-title">Formulario de registro</div>
         </div>
         <div class="modal-body">
-            <form (ngSubmit)="onSubmit()">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
 
                 <div class="modal-row">
                     <div class="modal-input">
                         <label for="idProduct">ID</label>
-                        <input type="text" id="id" name="id" required [(ngModel)]="formData.id">
+                        <input type="text" id="id" name="id" formControlName="id">
+                        @if(registerForm.controls['id'].invalid && (registerForm.controls['id'].dirty ||
+                        registerForm.controls['id'].touched)){
+                        @if(registerForm.controls['id'].errors?.['required']){
+                        <div>
+                            Este campo es requerido.
+                        </div>
+                        }
+
+                        @if(registerForm.controls['id'].errors?.['minlength']){
+                        <div>
+                            El ID debe tener al menos 3 caracteres.
+                        </div>
+                        }
+
+                        @if(registerForm.controls['id'].errors?.['maxlength']){
+                        <div>
+                            El ID no puede tener más de 10 caracteres.
+                        </div>
+                        }
+                        }
                     </div>
 
                     <div class="modal-input">
                         <label for="name">Nombre</label>
-                        <input type="text" id="name" name="name" required [(ngModel)]="formData.name">
+                        <input type="text" id="name" name="name" formControlName="name">
+                        @if(registerForm.controls['name'].invalid && (registerForm.controls['name'].dirty ||
+                        registerForm.controls['name'].touched)){
+                        @if(registerForm.controls['name'].errors?.['required']){
+                        <div>
+                            Este campo es requerido.
+                        </div>
+                        }
+
+                        @if(registerForm.controls['name'].errors?.['minlength']){
+                        <div>
+                            El Nombre debe tener al menos 5 caracteres.
+                        </div>
+                        }
+
+                        @if(registerForm.controls['name'].errors?.['maxlength']){
+                        <div>
+                            El Nombre no puede tener más de 100 caracteres.
+                        </div>
+                        }
+                        }
                     </div>
                 </div>
 
                 <div class="modal-row">
                     <div class="modal-input">
                         <label for="description">Descripción</label>
-                        <input type="text" id="description" name="description" required
-                            [(ngModel)]="formData.description">
+                        <input type="text" id="description" name="description" formControlName="description">
+                        @if(registerForm.controls['description'].invalid && (registerForm.controls['description'].dirty
+                        ||
+                        registerForm.controls['description'].touched)){
+                        @if(registerForm.controls['description'].errors?.['required']){
+                        <div>
+                            Este campo es requerido.
+                        </div>
+                        }
+
+                        @if(registerForm.controls['description'].errors?.['minlength']){
+                        <div>
+                            La Descripción debe tener al menos 10 caracteres.
+                        </div>
+                        }
+
+                        @if(registerForm.controls['description'].errors?.['maxlength']){
+                        <div>
+                            La Descripción no puede tener más de 200 caracteres.
+                        </div>
+                        }
+                        }
                     </div>
 
                     <div class="modal-input">
                         <label for="logo">Logo</label>
-                        <input type="logo" id="logo" name="logo" required [(ngModel)]="formData.logo">
+                        <input type="logo" id="logo" name="logo" formControlName="logo">
+                        @if(registerForm.controls['logo'].invalid && (registerForm.controls['logo'].dirty
+                        ||
+                        registerForm.controls['logo'].touched)){
+                        @if(registerForm.controls['logo'].errors?.['required']){
+                        <div>
+                            Este campo es requerido.
+                        </div>
+                        }
+                        }
                     </div>
                 </div>
                 <div class="modal-row">
                     <div class="modal-input">
                         <label for="date_release">Fecha Liberación</label>
-                        <input type="date" id="date_release" name="date_release" required
-                            [(ngModel)]="formData.date_release">
+                        <input type="date" id="date_release" name="date_release" formControlName="date_release">
+                        @if(registerForm.controls['date_release'].invalid &&
+                        (registerForm.controls['date_release'].dirty
+                        ||
+                        registerForm.controls['date_release'].touched)){
+                        @if(registerForm.controls['date_release'].errors?.['required']){
+                        <div>
+                            Este campo es requerido.
+                        </div>
+                        }
+
+                        @if(registerForm.controls['date_release'].errors?.['dateIsInPast']){
+                        <div>
+                            La Fecha debe ser igual o mayor a la fecha actual
+                        </div>
+                        }
+
+
+                        }
                     </div>
 
                     <div class="modal-input">
                         <label for="date_revision">Fecha Revisión</label>
-                        <input type="date" id="date_revision" name="date_revision" required
-                            [(ngModel)]="formData.date_revision">
+                        <input type="date" id="date_revision" name="date_revision" formControlName="date_revision">
+                        @if(registerForm.controls['date_revision'].invalid &&
+                        (registerForm.controls['date_revision'].dirty
+                        ||
+                        registerForm.controls['date_revision'].touched)){
+                        @if(registerForm.controls['date_revision'].errors?.['required']){
+                        <div>
+                            Este campo es requerido.
+                        </div>
+                        }
+
+                        @if(registerForm.controls['date_revision'].errors?.['invalidDateRevision']){
+                        <div>
+                            La fecha de revisión debe ser exactamente un año posterior a la fecha de liberación
+                        </div>
+                        }
+                        }
                     </div>
                 </div>
 

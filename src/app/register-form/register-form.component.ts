@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../product.service';
 import { ProductInterface } from '../interfaces/interfaces';
 import { NotificationService } from '../notification.service';
+import { dateReleaseValidator, dateRevisionValidator } from '../validators/custom-validators';
 
 @Component({
   selector: 'app-register-form',
@@ -12,27 +13,36 @@ import { NotificationService } from '../notification.service';
   styleUrl: './register-form.component.scss'
 })
 export class RegisterFormComponent implements OnInit {
+  @Input() editProduct: ProductInterface = {} as ProductInterface;
+  @Input() isEdit: boolean = false;
   @Output() closeModal = new EventEmitter<void>();
   @Output() productCreated = new EventEmitter<ProductInterface>();
   @Output() productUpdated = new EventEmitter<ProductInterface>();
-  @Input() isEdit: boolean = false;
-  @Input() editProduct: ProductInterface = {} as ProductInterface;
   bodyProduct: ProductInterface = {} as ProductInterface;
+  registerForm: FormGroup;
 
-  formData = {
-    id: '',
-    name: '',
-    description: '',
-    logo: '',
-    date_release: '',
-    date_revision: '',
-  };
-
-  constructor(private _productService: ProductService, private _notificationService: NotificationService) { }
+  constructor(private fb: FormBuilder, private _productService: ProductService, private _notificationService: NotificationService) {
+    this.registerForm = this.fb.group({
+      id: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
+      logo: ['', Validators.required],
+      date_release: ['', [Validators.required, dateReleaseValidator]],
+      date_revision: ['', [Validators.required, dateRevisionValidator('date_release')]]
+    });
+  }
 
   ngOnInit(): void {
     if (this.isEdit) {
-      this.formData = { ...this.editProduct, date_release: this._formatDate(new Date(this.editProduct.date_release)), date_revision: this._formatDate(new Date(this.editProduct.date_revision)) };
+      this.registerForm.patchValue({
+        id: this.editProduct.id,
+        name: this.editProduct.name,
+        description: this.editProduct.description,
+        logo: this.editProduct.logo,
+        date_release: this._formatDate(new Date(this.editProduct.date_release)),
+        date_revision: this._formatDate(new Date(this.editProduct.date_revision))
+      });
+      this.registerForm.get('id')?.disable();
     }
   }
 
@@ -47,8 +57,8 @@ export class RegisterFormComponent implements OnInit {
     this.closeModal.emit();
   }
 
-  onSubmit() {
-    this.bodyProduct = { ...this.formData, date_release: new Date(this.formData.date_release), date_revision: new Date(this.formData.date_revision) };
+  onSubmit(value: any) {
+    this.bodyProduct = { ...value, date_release: new Date(value.date_release), date_revision: new Date(value.date_revision) };
 
     if (this.isEdit) {
       this._productService.updateProduct(this.bodyProduct).subscribe((data) => {
