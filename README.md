@@ -1,27 +1,67 @@
 # NttDataPruebaTecnica
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.9.
+## Requisitos previos
 
-## Development server
+Asegúrate de tener instalados los siguientes programas antes de comenzar:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Node.js](https://nodejs.org/en/) (versión 14.x o superior)
+- [Angular CLI](https://angular.io/cli) (versión 12.x o superior)
+- [Git](https://git-scm.com/)
 
-## Code scaffolding
+## Abrir el proyecto backend adjunto en el correo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Una vez dentro del directorio del proyecto, instala las dependencias utilizando npm:
 
-## Build
+```bash
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para levantar el servidor de desarrollo de Express, utiliza el siguiente comando:
 
-## Running unit tests
+```bash
+npm run start:dev
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Clonar el repositorio
 
-## Running end-to-end tests
+Para clonar el repositorio en tu máquina local, ejecuta el siguiente comando en la terminal:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+git clone https://github.com/usuario/nombre-repositorio.git
+```
 
-## Further help
+## Después de clonar el repositorio, navega dentro del directorio del proyecto:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+cd nombre-repositorio
+```
+
+## Instalación de dependencias
+Una vez dentro del directorio del proyecto, instala las dependencias utilizando npm:
+
+```bash
+npm install
+```
+
+## Ejecutar el proyecto
+Para levantar el servidor de desarrollo de Angular, utiliza el siguiente comando:
+
+```bash
+ng serve
+```
+
+## Ejecutar los tests
+Para ejecutar los tests unitarios configurados en el proyecto, utiliza el siguiente comando:
+
+```bash
+ng run test
+```
+
+Esto ejecutará los tests y te mostrará los resultados en la consola.
+
+## Ver la cobertura de los tests
+Si deseas ver el porcentaje de cobertura de los tests en el proyecto, ejecuta:
+
+```bash
+ng run test:coverage
+```
