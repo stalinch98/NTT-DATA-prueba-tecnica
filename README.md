@@ -19,7 +19,7 @@ npm install
 Para levantar el servidor de desarrollo de Express, utiliza el siguiente comando:
 
 ```bash
-  npm run start:dev
+npm run start:dev
 ```
 
 ## Clonar el repositorio
@@ -27,7 +27,7 @@ Para levantar el servidor de desarrollo de Express, utiliza el siguiente comando
 Para clonar el repositorio en tu máquina local, ejecuta el siguiente comando en la terminal:
 
 ```bash
-  git clone https://github.com/usuario/nombre-repositorio.git
+git clone https://github.com/usuario/nombre-repositorio.git
 ```
 
 ## Después de clonar el repositorio, navega dentro del directorio del proyecto:
